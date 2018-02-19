@@ -1,0 +1,44 @@
+<section class="container wrapper section-sign-in">
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 offset-xl-3 offset-lg-3 offset-0">
+            
+            <div class="card card-sign-in">
+                <div class="card-body hvr-glow">
+                    <h4 class="card-title">Sign In</h4>
+                    <hr class="hr-full">
+
+                    <form action='/authentication/signin' method='POST' class="form-sign-in">
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-junglegreen" id="basic-addon1"><i class="fas fa-at text-white"></i></span>
+                                </div>
+                                <input type="email" class="form-control" id="username" name="username" placeholder="example@xyz.com">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-junglegreen" id="basic-addon1">
+                                        <i class="fas fa-key text-white"></i>
+                                    </span>
+                                </div>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="*******">
+                            </div>
+                        </div>
+
+                        <div class="form-group text-right">
+                            <button type='submit' class="btn bg-junglegreen btn-signin text-white">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp;&nbsp;Submit
+                            </button><br>
+                        </div>
+
+                    </form>
+                </div>
+            </div>{{!-- card --}}
+
+        </div>{{!-- col --}}
+    </div>{{!-- row --}}
+</section>{{!-- section --}}

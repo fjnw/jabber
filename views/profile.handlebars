@@ -1,0 +1,76 @@
+<section class="container wrapper section-dashboard">
+
+	{{!-- User Profile  --}}
+	<div class="row user-panel">
+		
+		{{!-- Profile Card --}}
+		<div class="col-xl-3 col-lg-3 col-md-3 text-center">
+
+			{{!-- User: Profile Picture --}}
+			<img id='user-image' data-value="{{ messages.0.User.dataValues.id }}" src="/assets/images/profile/{{ messages.0.User.dataValues.profilepicture }}" class="img-fluid rounded profile-picture" alt="profile picture for {{ messages.0.User.dataValues.firstname }} {{ messages.0.User.dataValues.lastname }}">
+
+			<h4> {{ messages.0.User.dataValues.firstname }} {{ messages.0.User.dataValues.lastname }}</h4>
+			<hr class="hr-full">
+			
+			{{!-- User: Bio --}}
+			<h6 id="user-bio"> {{ messages.0.User.dataValues.bio }} </h6>
+			<a href="/users/follow/{{ messages.0.User.dataValues.id }}" class="btn btn-primary">Follow {{ messages.0.User.dataValues.firstname }}</a>
+		</div>
+		
+		{{!-- Message Feed --}}
+		<div class="col-xl-9 col-lg-9 col-md-9">
+			
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" id="home-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="home" aria-selected="true">Posts</a>
+				</li>
+			</ul><br>
+
+			{{!-- Message Form  --}}
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="home-tab">
+					{{!-- User Messages --}}
+					{{#each messages}}
+						<div class="media">
+							<img class="rounded mr-3 post-picture" src="/assets/images/profile/{{ User.dataValues.profilepicture }}" alt="Generic placeholder image">
+							<div class="media-body">
+								<h5 class="mt-0">{{ User.dataValues.firstname }}</h5>
+								{{#if image}}
+									<a href="/assets/images/post/{{ image }}" target="_blank"><img src="/assets/images/post/{{ image }}" alt="" class="img-fluid user-picture"></a><br>
+								{{/if}}
+								<textarea name="update-task" id="update-message-{{ id }}" class="update-task form-control"></textarea>
+
+								<span id="message-{{ id }}">{{ message }}</span><br>
+								<small>
+									<span id="postedTime"> {{ formatDate createdAt 'MMMM Do YYYY, h:mm:ss a' }} </span>
+								</small><br>
+							</div>
+						</div><br>
+						<hr class="hr">
+					{{/each}}
+				</div>
+			</div>{{!-- tab content --}}
+		</div>{{!-- Profile Content Column --}}
+	</div>{{!-- row --}}
+
+	{{!-- Modal for searched users --}}
+	<div class="modal fade" id="matchuser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+				<div class="modal-body" id="insertdata">
+					{{!-- Body is generated on the fly --}}
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</div>
+            </div>
+        </div>
+    </div>
+
+</section>
+

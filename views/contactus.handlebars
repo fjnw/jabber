@@ -1,0 +1,75 @@
+<section class="container wrapper section-contact-us">
+
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 offset-xl-3 offset-lg-3 offset-0">
+            {{#if errs}}
+                {{#each errs}}
+                    <div class="alert alert-danger">
+                        {{msg}}
+                    </div>
+                {{/each}}
+            {{/if}}
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 offset-xl-3 offset-lg-3 offset-0">
+            
+            <div class="card card-contact-us">
+                <div class="card-body">
+                    <h4 class="card-title">Contact Us</h4>
+                    <hr class="hr-full">
+                    <form action='/contactus' method='POST' class="form-contact-us">
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-junglegreen" id="basic-addon1">
+                                        <i class="fas fa-user-circle text-white"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-junglegreen" id="basic-addon1">
+                                        <i class="fas fa-at text-white"></i>
+                                    </span>
+                                </div>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text bg-junglegreen" id="basic-addon1">
+                                        <i class="fas fa-phone text-white"></i>
+                                    </span>
+                                </div>
+                                <input type="text" class="form-control" id="contact" name="contact" placeholder="Contact">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-group">
+                                <textarea class="form-control" id="message" name="message" rows="3" placeholder="Message"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group text-right">
+                            <button type='submit' class="btn bg-junglegreen btn-signin text-white">
+                                <i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp;&nbsp;Submit
+                            </button><br>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

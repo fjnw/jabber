@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        
+        {{!-- Required meta tags --}}
+        <title>Jabber</title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        {{!-- Favicon Link --}}
+	 	<link rel="shortcut icon" href="#">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+        
+        {{!-- Font Awesome 5.0.2 --}}
+        <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+
+        {{!-- Animate CSS --}}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.css">
+
+        {{!-- Google Font --}}
+        <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+
+        {{!-- Custom CSS (should be at the end so that no other css style can override it) --}}
+        <link rel="stylesheet" href="/assets/stylesheets/jabber.css">
+
+    </head>
+
+    <body>
+        
+        {{>header}}
+
+        {{!-- Flash Message Container --}}
+        <div class="container notifications">
+            <div class="row">
+                
+                {{#if success_msg }}
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 offset-xl-3 offset-lg-3 offset-0 alert alert-success">
+                        {{ success_msg }}
+                    </div>
+                {{/if}}
+
+                {{#if error_msg }}
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 offset-xl-3 offset-lg-3 offset-0 alert alert-danger">
+                        {{ error_msg }}
+                    </div>
+                {{/if}}
+
+                {{#if error }}
+                    <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12 offset-xl-3 offset-lg-3 offset-0 alert alert-danger">
+                        {{ error }}
+                    </div>
+                {{/if}}
+
+            </div>
+        </div>
+
+        {{{body}}}
+
+        {{>footer}}
+        
+        {{!-- jQuery first, then Tether, then Bootstrap JS --}}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
+        <script src="/assets/javascripts/moment.js"></script>
+        <script src="/assets/javascripts/jabber.js"></script>
+
+    </body>
+    
+</html>

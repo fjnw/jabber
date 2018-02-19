@@ -1,0 +1,45 @@
+<section class="container wrapper section-searchresult">
+
+	{{!-- User Profile  --}}
+	<div class="row user-panel">
+		
+		{{!-- Profile Card --}}
+		<div class="col-xl-3 col-lg-3 col-md-3 text-center">
+
+			{{!-- User: Profile Picture --}}
+			<img id='user-image' data-value="{{ user.id }}" src="/assets/images/profile/{{ user.profilepicture }}" class="img-fluid rounded profile-picture" alt="profile picture for {{ user.firstname }} {{ user.lastname }}">
+
+			<h4> {{ user.firstname }} {{ user.lastname }}</h4>
+			<hr class="hr-full">
+
+		</div>
+		
+		{{!-- Message Feed --}}
+		<div class="col-xl-9 col-lg-9 col-md-9">
+			
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" id="home-tab" data-toggle="tab" href="#searchresult" role="tab" aria-controls="home" aria-selected="true">Search Result</a>
+				</li>
+			</ul><br>
+
+			{{!-- Message Form  --}}
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="searchresult" role="tabpanel" aria-labelledby="home-tab">
+					{{!-- User Messages --}}
+					{{#each users}}
+						<div class="media">
+							<img class="rounded mr-3 post-picture" src="/assets/images/profile/{{ profilepicture }}" alt="Generic placeholder image">
+							<div class="media-body">
+								<h5 class="mt-0">{{ firstname }}</h5>
+								<a href="/users/profile/{{ id }}" class="btn btn-primary btn-sm">View Profile</a>
+							</div>
+						</div>
+						<hr class="hr">
+					{{/each}}
+				</div>
+			</div>{{!-- tab content --}}
+		</div>{{!-- Profile Content Column --}}
+	</div>{{!-- row --}}
+</section>
+

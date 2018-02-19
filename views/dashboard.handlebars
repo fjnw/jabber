@@ -1,0 +1,155 @@
+<section class="container wrapper section-dashboard">
+
+	{{!-- User Profile  --}}
+	<div class="row user-panel">
+		
+		{{!-- Profile Card --}}
+		<div class="col-xl-3 col-lg-3 col-md-3 text-center">
+
+			{{!-- User: Profile Picture --}}
+			<img id='user-image' data-value="{{user.id}}" src="/assets/images/profile/{{ user.profilepicture}}" class="img-fluid rounded profile-picture" alt="profile picture for {{ user.firstname }} {{user.lastname}}">
+
+			<h4>
+				{{!-- User: First Name --}}
+				<span id="user-firstname" class="edit">{{ user.firstname }}</span> 
+				<textarea id="user-firstname-edit" class="update-task form-control update">{{user.firstname}}</textarea>
+				
+				{{!-- User: Last Name --}}
+				<span id="user-lastname" class="edit">{{ user.lastname }}</span>
+				<textarea id="user-lastname-edit" class="update-task form-control update">{{user.lastname}}</textarea>
+			</h4>
+
+			<hr class="hr-full">
+			
+			{{!-- User: Bio --}}
+			<h6 id="user-bio" class="edit"> {{ user.bio }} </h6>
+			<textarea id="user-bio-edit" class="update-task form-control update">{{user.bio}}</textarea>
+			<hr class="hr-half">
+
+			{{!-- User: Email --}}
+			<p>
+				<i class="fas fa-envelope"></i>
+				<strong id="user-email" class="edit"> {{ user.email }} </strong>
+				<textarea id="user-email-edit" class="update-task form-control update">{{user.email}}</textarea>
+			</p>
+			
+			{{!-- Update Btn --}}
+			<button class="btn btn-sm bg-junglegreen text-white" id="btn-profile-update" record-id="{{ id }}">
+				<i class="fas fa-pencil-alt"></i>
+			</button>
+
+		</div>
+		
+		{{!-- Message Feed --}}
+		<div class="col-xl-9 col-lg-9 col-md-9">
+			
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" id="home-tab" data-toggle="tab" href="#posts" role="tab" aria-controls="home" aria-selected="true">Posts</a>
+				</li>
+				<li class="nav-item" id="feed-tab">
+					<a class="nav-link" data-toggle="tab" href="#feed" role="tab" aria-controls="profile" aria-selected="false">News Feed</a>
+				</li>
+				<li class="nav-item" id="follower-tab" >
+					<a class="nav-link" id="followers-user" data-toggle="tab" href="#follower" role="tab" aria-controls="follower" aria-selected="false">Followers</a>
+				</li>
+				<li class="nav-item" id="following-tab">
+					<a class="nav-link" id="following-user" data-toggle="tab" href="#following" role="tab" aria-controls="following-tab" aria-selected="false">Following</a>
+				</li>
+			</ul><br>
+
+			{{!-- Message Form  --}}
+			<div class="tab-content" id="myTabContent">
+				<div class="tab-pane fade show active" id="posts" role="tabpanel" aria-labelledby="home-tab">
+					
+					<form action='/users/dashboard' method='POST' class="form-sign-up" enctype="multipart/form-data">
+						
+						<div class="form-group">
+							<textarea class="form-control" name="message" id="message" placeholder="Type your message here !"></textarea>
+						</div>
+						
+						<div class="form-group">
+							<button class="btn bg-junglegreen text-white" for="">
+								<i class="fas fa-comment"></i> Post
+							</button>
+							<label class="btn bg-junglegreen text-white file-upload" for="messageImage">
+								<input id="messageImage" name="messageImage" type="file" style="display:none" 
+								onchange="$('#upload-file-info').html(this.files[0].name)">
+								<i class="fas fa-camera-retro"></i>
+							</label>
+							<span class='label label-info' id="upload-file-info"></span>
+						</div>
+					</form>
+
+					<hr class="hr-full">
+
+						{{!-- User Messages --}}
+						{{#each messages}}
+
+							<div class="media">
+								<img class="rounded mr-3 post-picture" src="/assets/images/profile/{{ User.dataValues.profilepicture }}" alt="Generic placeholder image">
+								<div class="media-body">
+
+									<h5 class="mt-0">{{ User.dataValues.firstname }}</h5>
+									{{#if image}}
+										<a href="/assets/images/post/{{ image }}" target="_blank"><img src="/assets/images/post/{{ image }}" alt="" class="img-fluid user-picture"></a><br>
+									{{/if}}
+									<textarea name="update-task" id="update-message-{{ id }}" class="update-task form-control"></textarea>
+
+									<span id="message-{{ id }}">{{ message }}</span><br>
+									<small>
+										<span id="postedTime"> {{ formatDate createdAt 'MMMM Do YYYY, h:mm:ss a' }} </span>
+									</small><br>
+
+									<button class="btn btn-sm bg-junglegreen text-white btn-update" id="update-{{ id }}" data-value="update" record-id="{{ id }}">
+										<i class="fas fa-pencil-alt"></i>
+									</button>
+									
+									<a class="btn btn-sm bg-desire text-white" id="delete-{{ id }}" operation="delete" data-href="{{ id }}" data-toggle="modal" data-target="#exampleModalCenter">
+										<i class="fas fa-trash"></i>
+									</a>
+
+								</div>
+							</div><br>
+							<hr class="hr-full">
+						{{/each}}
+
+						{{!-- Modal --}}
+						<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLongTitle"></h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										Are you sure want to delete this post ?
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+										<button type="button" id="btn-delete" class="btn btn-danger btn-delete">Delete</button>
+									</div>
+								</div>
+							</div>
+						</div>
+				</div>
+
+				{{!-- Global Feed Tab --}}
+				<div class="tab-pane fade" id="feed" role="tabpanel" aria-labelledby="feed-tab">
+				</div>
+
+				{{!-- Followers Tab --}}
+				<div class="tab-pane fade" id="follower" role="tabpanel" aria-labelledby="follower-tab">
+				</div>
+
+				{{!-- Following Tab --}}
+				<div class="tab-pane fade" id="following" role="tabpanel" aria-labelledby="following-tab">
+				</div>
+
+			</div>{{!-- tab content --}}
+		</div>{{!-- Profile Content Column --}}
+	</div>{{!-- row --}}
+</section>
+
