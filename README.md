@@ -15,6 +15,13 @@
 
 + [Live](https://jabber-bootcamp.herokuapp.com/)
 
+## Instructions
++ git clone
++ Heroku > add resources > JawsDB MySQL
++ update host/username/password/database information into config/config.json
++ terminal:  npm install
++ terminal: node server.js
+
 ## Built With
 + Node JS
 + Express JS
@@ -40,11 +47,8 @@
 ## Contributors
 + Jamal
 + [Jeff](https://github.com/JeffOstrom)
-+ [Kalpesh](https://github.com/kapu9899)
++ [Kalpesh](https://github.com/kalpesh-b-patel)
 + [Peter](https://github.com/ptpeck357)
 
 ## License
 + Open Source
-
-## Acknowledgments
-+ N/A
