@@ -13,7 +13,7 @@
 
 ## Try It
 
-+ [Live](https://jabber-bootcamp.herokuapp.com/)
++ [Live](https://jabber-fjnw.herokuapp.com/)
 
 ## Instructions
 + git clone
